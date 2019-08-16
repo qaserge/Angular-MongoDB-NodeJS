@@ -1,0 +1,76 @@
+<div class="container">
+  <br>
+
+  <h5>Choose food:</h5>
+  <button class="btn btn-info" (click)="ingredientSelect('burger')"> Burger </button>
+  <button class="btn btn-info" (click)="ingredientSelect('hotdog')"> HotDog </button>
+  <button class="btn btn-info" (click)="ingredientSelect('shawarma')"> Shawarma </button>
+
+
+  <div class="alert alert-primary" >
+  <h4> {{type}} <small>{{name}}</small></h4>
+</div>
+
+
+  <div class="form-row">
+      <div class="col">
+        <!-- ------------------------------------------------- -->
+        <div class="alert alert-dark">
+          Ingredients:
+          <ul>
+            <li>Price: <strong>{{price}}</strong> CAD     </li>
+            <li>Meat: <strong>{{ingredients.meat}}</strong>       </li>
+            <li>Vegetables: <strong>{{ingredients.vegetables}}</strong>       </li>
+            <li>Sauce: <strong>{{ingredients.sauce}}</strong>       </li>
+            </ul>
+          </div>
+
+          <h5>Ingredients edit: </h5>
+          <button class="btn btn-primary" (click)="showEdit()">Edit</button>
+          <div><br /></div>
+          <form *ngIf="isEdit">
+            <div class="form-goup">
+              <input type="text" placeholder="Food type" class="form-control" [(ngModel)]="type" name="type"><br />
+              <input type="text" placeholder="Name" class="form-control" [(ngModel)]="name" name="name"><br />
+              <input type="text" placeholder="Price" class="form-control" [(ngModel)]="price" name="price"><br />
+              <input type="text" placeholder="Meat" class="form-control" [(ngModel)]="ingredients.meat" name="meat"><br />
+              <input type="text" placeholder="Vegetables" class="form-control" [(ngModel)]="ingredients.vegetables" name="vegetables"><br />
+              <input type="text" placeholder="Sauce" class="form-control" [(ngModel)]="ingredients.sauce" name="sauce"><br />
+
+            </div>
+          </form>
+        <!-- -------------------------------------------------------- -->
+      </div>
+      <div class="col">
+        <!-- -------------------------------------------------------- -->
+        <h5>Options: </h5>
+      <form (submit)="addOpt(option.value)">
+        <div class="form-goup">
+          <label for="option">Add new</label>
+          <input type="text" id="option" placeholder="Enter text" class="form-control" #option>
+            <br />
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+        </form>
+      <br />
+
+        <div class="alert alert-warning">
+          <!-- {{options}} -->
+          <ul>
+            <!-- переберает массив типа foreach переменная opt-->
+            <!-- добавляем перменную i для счетчика -->
+            <li *ngFor = "let opt of options; let i = index">
+              {{i+1}}-{{opt}}
+              <button class="btn btn-danger btn-sm" (click)="deleteOpt(opt)">x</button>
+              </li>
+            </ul>
+          </div>
+        <!-- -------------------------------------------------------- -->
+
+      </div>
+    </div>
+
+
+
+
+  </div>
