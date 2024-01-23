@@ -1,0 +1,1 @@
+Applications while learning Angular
